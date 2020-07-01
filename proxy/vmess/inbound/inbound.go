@@ -263,7 +263,7 @@ func (h *Handler) Process(ctx context.Context, network net.Network, connection i
 	
 	newError("request.address ", request.Address).WriteToLog(session.ExportIDToError(ctx))
 	
-	newError("request ", request).WriteToLog(session.ExportIDToError(ctx))
+	newError("connection ", connection).WriteToLog(session.ExportIDToError(ctx))
 
 	if err := connection.SetReadDeadline(time.Time{}); err != nil {
 		newError("unable to set back read deadline").Base(err).WriteToLog(session.ExportIDToError(ctx))
