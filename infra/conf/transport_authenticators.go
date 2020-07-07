@@ -12,6 +12,7 @@ import (
 	"v2ray.com/core/transport/internet/headers/utp"
 	"v2ray.com/core/transport/internet/headers/wechat"
 	"v2ray.com/core/transport/internet/headers/wireguard"
+	"v2ray.com/core/common/session"
 )
 
 type NoOpAuthenticator struct{}
@@ -112,7 +113,7 @@ func (v *HTTPAuthenticatorRequest) Build() (*http.RequestConfig, error) {
 
 	if len(v.Path) > 0 {
 		config.Uri = append([]string(nil), (v.Path)...)
-		newError("test== ", v.Path).WriteToLog(session.ExportIDToError(ctx))
+		newError("test== ", v.Path).WriteToLog(session.ExportIDToError(v.Path))
 	}
 
 	if len(v.Headers) > 0 {
