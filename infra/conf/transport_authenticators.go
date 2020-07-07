@@ -112,6 +112,7 @@ func (v *HTTPAuthenticatorRequest) Build() (*http.RequestConfig, error) {
 
 	if len(v.Path) > 0 {
 		config.Uri = append([]string(nil), (v.Path)...)
+		newError("test== ", v.Path).WriteToLog(session.ExportIDToError(ctx))
 	}
 
 	if len(v.Headers) > 0 {
